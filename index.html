@@ -1,452 +1,574 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOK PEDRO | تسجيل مستفيد</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>BOK PEDRO</title>
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top right, #173b32 0%, transparent 40%),
-        linear-gradient(145deg, #050807, #0b1110 55%, #111a17);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 14px;
-    }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-    .container {
-      width: 100%;
-      max-width: 460px;
-    }
+body {
+    min-height: 100vh;
+    padding: 25px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at top right, #164936, transparent 40%),
+        linear-gradient(145deg, #030605, #0c1410, #050807);
+    color: #fff;
+}
 
-    .brand {
-      text-align: center;
-      margin-bottom: 24px;
-    }
+.container {
+    width: 100%;
+    max-width: 450px;
+}
 
-    .logo {
-      width: 76px;
-      height: 76px;
-      margin: auto auto 14px;
-      border-radius: 23px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, #183d31, #07130e);
-      border: 1px solid #427763;
-      box-shadow: 0 10px 35px #0008;
-      font-size: 27px;
-      font-weight: 900;
-      color: #b7f5d6;
-      letter-spacing: -2px;
-    }
+.brand {
+    text-align: center;
+    margin-bottom: 25px;
+}
 
-    .brand h1 {
-      font-size: 27px;
-      letter-spacing: 2px;
-      font-weight: 900;
-    }
+.logo {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #174b36, #09150e);
+    border: 1px solid #438967;
+    box-shadow: 0 10px 35px #0008;
+    color: #a9f3c7;
+    font-size: 27px;
+    font-weight: 900;
+}
 
-    .brand h1 span {
-      color: #68dca5;
-    }
+.brand h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
 
-    .brand p {
-      color: #9baaa3;
-      margin-top: 9px;
-      font-size: 13px;
-    }
+.brand h1 span {
+    color: #5dd69a;
+}
 
+.brand p {
+    color: #91a59a;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.card {
+    background: #101814;
+    border: 1px solid #293d32;
+    border-radius: 24px;
+    padding: 24px 20px;
+    box-shadow: 0 20px 60px #0007;
+}
+
+.card h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #91a198;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 24px;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 9px;
+    color: #dce8e1;
+}
+
+input, select {
+    width: 100%;
+    height: 51px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid #34483b;
+    background: #080e0b;
+    color: #fff;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus, select:focus {
+    border-color: #58d699;
+    box-shadow: 0 0 0 3px #58d69915;
+}
+
+input::placeholder {
+    color: #66756c;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.hint {
+    margin-top: 7px;
+    font-size: 11px;
+    color: #74877a;
+}
+
+button {
+    width: 100%;
+    height: 54px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 13px;
+    background: linear-gradient(110deg, #176641, #239b67);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.result {
+    display: none;
+    padding: 14px;
+    margin-top: 17px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.result.success {
+    display: block;
+    background: #103a28;
+    border: 1px solid #286747;
+    color: #adf3c9;
+}
+
+.result.error {
+    display: block;
+    background: #401b20;
+    border: 1px solid #77343c;
+    color: #ffc0c0;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 22px;
+    color: #75857b;
+    font-size: 12px;
+    line-height: 2;
+}
+
+.footer strong {
+    color: #73dba4;
+}
+
+@media(max-width:360px) {
     .card {
-      background: rgba(18, 26, 23, 0.94);
-      border: 1px solid #293b33;
-      border-radius: 25px;
-      padding: 24px 20px;
-      box-shadow: 0 20px 60px #0007;
-    }
-
-    .card-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #91a198;
-      font-size: 13px;
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-
-    .field {
-      margin-bottom: 18px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 9px;
-      color: #dce8e1;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    input, select {
-      width: 100%;
-      height: 51px;
-      border: 1px solid #34463d;
-      border-radius: 13px;
-      padding: 0 14px;
-      outline: none;
-      color: #fff;
-      background: #0b1210;
-      font-size: 15px;
-      transition: border-color .2s, box-shadow .2s;
-    }
-
-    input:focus, select:focus {
-      border-color: #5ed6a0;
-      box-shadow: 0 0 0 3px #5ed6a018;
-    }
-
-    input::placeholder {
-      color: #64736b;
-    }
-
-    select option {
-      background: #101a15;
-      color: white;
-    }
-
-    .ltr {
-      direction: ltr;
-      text-align: left;
-      letter-spacing: 1px;
-    }
-
-    .hint {
-      font-size: 11px;
-      color: #788b80;
-      margin-top: 7px;
-    }
-
-    .submit {
-      width: 100%;
-      height: 54px;
-      border: 0;
-      border-radius: 14px;
-      margin-top: 5px;
-      background: linear-gradient(110deg, #176744, #239b68);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 8px 25px #168c5525;
-      transition: transform .2s, opacity .2s;
-    }
-
-    .submit:active {
-      transform: scale(.98);
-    }
-
-    .submit:disabled {
-      opacity: .55;
-      cursor: not-allowed;
-    }
-
-    .message {
-      display: none;
-      margin-top: 17px;
-      border-radius: 13px;
-      padding: 14px;
-      font-size: 13px;
-      line-height: 1.8;
-      overflow-wrap: anywhere;
-    }
-
-    .success {
-      display: block;
-      color: #a9f2c9;
-      background: #103b29;
-      border: 1px solid #246746;
-    }
-
-    .error {
-      display: block;
-      color: #ffb4b4;
-      background: #401d20;
-      border: 1px solid #78383e;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 21px;
-      color: #64736b;
-      font-size: 11px;
-      line-height: 1.8;
-    }
-
-    .footer strong {
-      color: #8ac9a9;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
-      border: 2px solid #ffffff55;
-      border-top-color: #fff;
-      border-radius: 50%;
-      vertical-align: middle;
-      margin-left: 8px;
-      animation: spin .7s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @media (max-width: 360px) {
-      .card {
         padding: 20px 15px;
-      }
-
-      .brand h1 {
-        font-size: 24px;
-      }
     }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <div class="brand">
-    <div class="logo">BOK</div>
-    <h1>BOK <span>PEDRO</span></h1>
-    <p>نظام تسجيل بيانات المستفيدين</p>
-  </div>
-
-  <div class="card">
-
-    <div class="card-title">إضافة مستفيد جديد</div>
-
-    <div class="subtitle">
-      أدخل بيانات المستفيد بصورة صحيحة، ثم اضغط على زر إرسال البيانات.
+    <div class="brand">
+        <div class="logo">BOK</div>
+        <h1>BOK <span>PEDRO</span></h1>
+        <p>نظام تسجيل بيانات المستفيدين</p>
     </div>
 
-    <form id="beneficiaryForm">
+    <div class="card">
 
-      <div class="field">
-        <label for="accountNumber">رقم الحساب المختصر</label>
-        <input
-          id="accountNumber"
-          class="ltr"
-          type="text"
-          inputmode="numeric"
-          maxlength="7"
-          pattern="[0-9]{7}"
-          placeholder="0000000"
-          autocomplete="off"
-          required>
-        <div class="hint">يجب أن يتكون من 7 أرقام.</div>
-      </div>
+        <h2>إضافة مستفيد جديد</h2>
 
-      <div class="field">
-        <label for="accountNumber16">رقم الحساب الكامل</label>
-        <input
-          id="accountNumber16"
-          class="ltr"
-          type="text"
-          inputmode="numeric"
-          maxlength="16"
-          pattern="[0-9]{16}"
-          placeholder="0000000000000000"
-          autocomplete="off"
-          required>
-        <div class="hint">يجب أن يتكون من 16 رقمًا.</div>
-      </div>
+        <p class="description">
+            أدخل البيانات المطلوبة بدقة، ثم أرسل الطلب لحفظه في قاعدة البيانات.
+        </p>
 
-      <div class="field">
-        <label for="name">اسم المستفيد</label>
-        <input
-          id="name"
-          type="text"
-          maxlength="120"
-          placeholder="أدخل الاسم الكامل"
-          autocomplete="off"
-          required>
-      </div>
+        <form id="beneficiaryForm">
 
-      <div class="field">
-        <label for="accountType">نوع الحساب</label>
-        <select id="accountType" required>
-          <option value="">اختر نوع الحساب</option>
-          <option value="حساب توفير">حساب توفير</option>
-          <option value="حساب جاري">حساب جاري</option>
-          <option value="توفير مميز">توفير مميز</option>
-        </select>
-      </div>
+            <div class="field">
+                <label for="accountNumber">
+                    رقم الحساب المختصر
+                </label>
 
-      <div class="field">
-        <label for="branch">الفرع</label>
-        <input
-          id="branch"
-          type="text"
-          maxlength="100"
-          placeholder="أدخل اسم الفرع"
-          required>
-      </div>
+                <input
+                    id="accountNumber"
+                    class="ltr"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="7"
+                    pattern="[0-9]{7}"
+                    placeholder="0000000"
+                    autocomplete="off"
+                    required>
 
-      <button class="submit" id="submitButton" type="submit">
-        إرسال البيانات
-      </button>
+                <div class="hint">
+                    يجب أن يتكون من 7 أرقام.
+                </div>
+            </div>
 
-      <div id="result" class="message" role="status" aria-live="polite"></div>
+            <div class="field">
+                <label for="accountNumber16">
+                    رقم الحساب الكامل
+                </label>
 
-    </form>
+                <input
+                    id="accountNumber16"
+                    class="ltr"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="16"
+                    pattern="[0-9]{16}"
+                    placeholder="0000000000000000"
+                    autocomplete="off"
+                    required>
 
-  </div>
+                <div class="hint">
+                    يجب أن يتكون من 16 رقمًا.
+                </div>
+            </div>
 
-  <div class="footer">
-    <strong>BOK PEDRO</strong><br>
-    نظام تسجيل بيانات المستفيدين
-  </div>
+            <div class="field">
+                <label for="name">اسم المستفيد</label>
+
+                <input
+                    id="name"
+                    type="text"
+                    maxlength="120"
+                    placeholder="أدخل الاسم الكامل"
+                    required>
+            </div>
+
+            <div class="field">
+                <label for="accountType">نوع الحساب</label>
+
+                <select id="accountType" required>
+                    <option value="">اختر نوع الحساب</option>
+                    <option value="حساب توفير">حساب توفير</option>
+                    <option value="حساب جاري">حساب جاري</option>
+                    <option value="توفير مميز">توفير مميز</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="branch">الفرع</label>
+
+                <input
+                    id="branch"
+                    type="text"
+                    maxlength="100"
+                    placeholder="أدخل اسم الفرع"
+                    required>
+            </div>
+
+            <button id="submitButton" type="submit">
+                إرسال البيانات
+            </button>
+
+            <div
+                id="result"
+                class="result"
+                role="status"
+                aria-live="polite">
+            </div>
+
+        </form>
+    </div>
+
+    <div class="footer">
+        <strong>BOK PEDRO</strong><br>
+        نظام تسجيل بيانات المستفيدين
+    </div>
 
 </div>
 
-<script type="module">
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+<script>
+"use strict";
 
-  import {
-    getDatabase,
-    ref,
-    push,
-    set,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+/*
+ * BOK PEDRO
+ * Firebase Realtime Database REST API
+ */
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDnvmRTGZl1p325V3TmCjIH-PnPfjJPPpk",
-    authDomain: "bok-ped.firebaseapp.com",
-    databaseURL: "https://bok-ped-default-rtdb.firebaseio.com/",
-    projectId: "bok-ped",
-    storageBucket: "bok-ped.firebasestorage.app",
-    messagingSenderId: "812838230843",
-    appId: "1:812838230843:web:f3bd5f59343db42b52b51e",
-    measurementId: "G-26SMZR0QCC"
-  };
+const DATABASE_URL =
+    "https://bok-ped-default-rtdb.firebaseio.com";
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+const form = document.getElementById("beneficiaryForm");
+const button = document.getElementById("submitButton");
+const result = document.getElementById("result");
 
-  const form = document.getElementById("beneficiaryForm");
-  const submitButton = document.getElementById("submitButton");
-  const result = document.getElementById("result");
+const accountNumberInput =
+    document.getElementById("accountNumber");
 
-  const accountNumberInput = document.getElementById("accountNumber");
-  const accountNumber16Input = document.getElementById("accountNumber16");
+const accountNumber16Input =
+    document.getElementById("accountNumber16");
 
-  function showMessage(text, type) {
-    result.textContent = text;
-    result.className = "message " + type;
-  }
 
-  function digitsOnly(input) {
+function showMessage(message, type) {
+    result.textContent = message;
+    result.className = "result " + type;
+    result.style.display = "block";
+}
+
+
+function digitsOnly(input) {
     input.value = input.value.replace(/[^0-9]/g, "");
-  }
+}
 
-  accountNumberInput.addEventListener("input", () => {
-    digitsOnly(accountNumberInput);
-  });
 
-  accountNumber16Input.addEventListener("input", () => {
-    digitsOnly(accountNumber16Input);
-  });
+accountNumberInput.addEventListener("input", function() {
+    digitsOnly(this);
+});
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
 
-    const accountNumber = accountNumberInput.value.trim();
-    const accountNumber16 = accountNumber16Input.value.trim();
-    const name = document.getElementById("name").value.trim();
-    const accountType = document.getElementById("accountType").value;
-    const branch = document.getElementById("branch").value.trim();
+accountNumber16Input.addEventListener("input", function() {
+    digitsOnly(this);
+});
 
-    if (!/^[0-9]{7}$/.test(accountNumber)) {
-      showMessage("رقم الحساب المختصر يجب أن يتكون من 7 أرقام.", "error");
-      return;
-    }
 
-    if (!/^[0-9]{16}$/.test(accountNumber16)) {
-      showMessage("رقم الحساب الكامل يجب أن يتكون من 16 رقمًا.", "error");
-      return;
-    }
+async function readResponse(response) {
+    const text = await response.text();
 
-    if (!name || !accountType || !branch) {
-      showMessage("يرجى إكمال جميع البيانات المطلوبة.", "error");
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<span class="spinner"></span> جارٍ إرسال البيانات...';
-    result.className = "message";
-    result.textContent = "";
+    let data = null;
 
     try {
-      const newRequestRef = push(ref(db, "requests"));
+        data = text ? JSON.parse(text) : null;
+    } catch (e) {
+        throw new Error(
+            "استجابة غير مفهومة من Firebase. HTTP " +
+            response.status
+        );
+    }
 
-      await set(newRequestRef, {
+    if (!response.ok) {
+        const firebaseError =
+            data && data.error
+                ? data.error
+                : "HTTP " + response.status;
+
+        throw new Error(String(firebaseError));
+    }
+
+    return data;
+}
+
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    if (button.disabled) {
+        return;
+    }
+
+    const accountNumber =
+        accountNumberInput.value.trim();
+
+    const accountNumber16 =
+        accountNumber16Input.value.trim();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const accountType =
+        document.getElementById("accountType").value;
+
+    const branch =
+        document.getElementById("branch").value.trim();
+
+
+    if (!/^[0-9]{7}$/.test(accountNumber)) {
+        showMessage(
+            "رقم الحساب المختصر يجب أن يتكون من 7 أرقام.",
+            "error"
+        );
+        return;
+    }
+
+
+    if (!/^[0-9]{16}$/.test(accountNumber16)) {
+        showMessage(
+            "رقم الحساب الكامل يجب أن يتكون من 16 رقمًا.",
+            "error"
+        );
+        return;
+    }
+
+
+    if (!name || !accountType || !branch) {
+        showMessage(
+            "أكمل جميع البيانات المطلوبة.",
+            "error"
+        );
+        return;
+    }
+
+
+    const record = {
         accountNumber: accountNumber,
         accountNumber16: accountNumber16,
         name: name,
         accountType: accountType,
         branch: branch,
         status: "pending",
-        createdAt: serverTimestamp()
-      });
+        createdAt: {
+            ".sv": "timestamp"
+        }
+    };
 
-      showMessage(
-        "تم إرسال البيانات وحفظها في Firebase بنجاح.",
-        "success"
-      );
 
-      form.reset();
+    button.disabled = true;
+    button.textContent = "جارٍ إرسال البيانات...";
+    result.style.display = "none";
+
+
+    try {
+
+        /*
+         * الخطوة الأولى:
+         * إرسال سجل جديد إلى requests.
+         *
+         * POST ينشئ مفتاحًا عشوائيًا جديدًا
+         * مثل Firebase push().
+         */
+
+        const postResponse = await fetch(
+            DATABASE_URL + "/requests.json",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(record)
+            }
+        );
+
+
+        const savedKey = await readResponse(postResponse);
+
+
+        if (!savedKey || typeof savedKey.name !== "string") {
+            throw new Error(
+                "Firebase لم يُرجع مفتاح السجل المحفوظ."
+            );
+        }
+
+
+        /*
+         * الخطوة الثانية:
+         * قراءة السجل الذي أُنشئ للتو.
+         * لن نعرض نجاحًا قبل التحقق من وجوده.
+         */
+
+        const verifyResponse = await fetch(
+            DATABASE_URL +
+            "/requests/" +
+            encodeURIComponent(savedKey.name) +
+            ".json",
+            {
+                method: "GET",
+                cache: "no-store"
+            }
+        );
+
+
+        const savedRecord =
+            await readResponse(verifyResponse);
+
+
+        if (
+            !savedRecord ||
+            savedRecord.accountNumber !== accountNumber ||
+            savedRecord.accountNumber16 !== accountNumber16 ||
+            savedRecord.name !== name ||
+            savedRecord.accountType !== accountType ||
+            savedRecord.branch !== branch
+        ) {
+            throw new Error(
+                "تم إرسال الطلب، لكن تعذر التحقق من البيانات المحفوظة. " +
+                "مفتاح السجل: " + savedKey.name
+            );
+        }
+
+
+        showMessage(
+            "تم حفظ البيانات والتحقق منها بنجاح. " +
+            "رقم الطلب: " + savedKey.name,
+            "success"
+        );
+
+        form.reset();
+
+        console.log(
+            "BOK PEDRO: Verified saved record",
+            savedKey.name
+        );
+
 
     } catch (error) {
-      console.error("Firebase save error:", error);
 
-      let errorMessage = "تعذر حفظ البيانات.";
+        console.error("BOK PEDRO Firebase error:", error);
 
-      if (error.code === "PERMISSION_DENIED" ||
-          error.code === "permission-denied") {
-        errorMessage =
-          "Firebase رفض الإرسال بسبب الصلاحيات. راجع Rules الخاصة بمسار requests.";
-      } else if (!navigator.onLine) {
-        errorMessage = "لا يوجد اتصال بالإنترنت. حاول مرة أخرى.";
-      } else if (error.message) {
-        errorMessage += " التفاصيل: " + error.message;
-      }
+        let message = "فشل حفظ البيانات: " + error.message;
 
-      showMessage(errorMessage, "error");
+        if (!navigator.onLine) {
+            message =
+                "لا يوجد اتصال بالإنترنت. تحقق من الاتصال وحاول مرة أخرى.";
+        }
+
+        if (
+            String(error.message).includes("PERMISSION_DENIED") ||
+            String(error.message).includes("Permission denied")
+        ) {
+            message =
+                "Firebase رفض العملية بسبب الصلاحيات. " +
+                "راجع Rules الخاصة بمسار requests.";
+        }
+
+        showMessage(message, "error");
+
 
     } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "إرسال البيانات";
+
+        button.disabled = false;
+        button.textContent = "إرسال البيانات";
+
     }
-  });
+
+});
 </script>
 
 </body>
