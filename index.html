@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOK PEDRO | إضافة مستفيد</title>
+<meta name="theme-color" content="#050908">
+<title>BOK PEDRO | إضافة بيانات المستفيد</title>
 
 <style>
 * {
@@ -12,11 +13,11 @@
 
 body {
     margin: 0;
-    padding: 24px 15px;
     min-height: 100vh;
+    padding: 24px 15px;
     font-family: Arial, sans-serif;
     background: linear-gradient(145deg, #050505, #071b17, #020706);
-    color: white;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,10 +27,10 @@ body {
     width: 100%;
     max-width: 440px;
     padding: 28px 22px;
-    background: rgba(255,255,255,0.045);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.12);
     border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
 }
 
 .logo {
@@ -55,13 +56,14 @@ label {
 }
 
 input, select {
+    display: block;
     width: 100%;
     height: 49px;
     padding: 0 14px;
     background: #0c1714;
     border: 1px solid #263b33;
     border-radius: 12px;
-    color: white;
+    color: #fff;
     font-size: 15px;
     outline: none;
 }
@@ -70,9 +72,13 @@ input:focus, select:focus {
     border-color: #65e6b5;
 }
 
+input::placeholder {
+    color: #71827a;
+}
+
 select option {
     background: #0c1714;
-    color: white;
+    color: #fff;
 }
 
 button {
@@ -89,7 +95,7 @@ button {
 }
 
 button:disabled {
-    opacity: 0.55;
+    opacity: .55;
     cursor: not-allowed;
 }
 
@@ -135,7 +141,10 @@ button:disabled {
 
     <form id="beneficiaryForm">
 
-        <label for="accountNumber">رقم الحساب المختصر — 7 أرقام</label>
+        <label for="accountNumber">
+            رقم الحساب المختصر — 7 أرقام
+        </label>
+
         <input
             id="accountNumber"
             type="text"
@@ -143,10 +152,14 @@ button:disabled {
             maxlength="7"
             pattern="[0-9]{7}"
             placeholder="مثال: 1234567"
+            autocomplete="off"
             required
         >
 
-        <label for="accountNumber16">رقم الحساب الكامل — 16 رقمًا</label>
+        <label for="accountNumber16">
+            رقم الحساب الكامل — 16 رقمًا
+        </label>
+
         <input
             id="accountNumber16"
             type="text"
@@ -154,10 +167,12 @@ button:disabled {
             maxlength="16"
             pattern="[0-9]{16}"
             placeholder="أدخل رقم الحساب الكامل"
+            autocomplete="off"
             required
         >
 
         <label for="name">اسم صاحب الحساب</label>
+
         <input
             id="name"
             type="text"
@@ -167,14 +182,18 @@ button:disabled {
         >
 
         <label for="accountType">نوع الحساب</label>
+
         <select id="accountType" required>
-            <option value="" disabled selected>اختر نوع الحساب</option>
+            <option value="" disabled selected>
+                اختر نوع الحساب
+            </option>
             <option value="حساب توفير">حساب توفير</option>
             <option value="حساب جاري">حساب جاري</option>
             <option value="توفير مميز">توفير مميز</option>
         </select>
 
         <label for="branch">الفرع</label>
+
         <input
             id="branch"
             type="text"
@@ -191,11 +210,14 @@ button:disabled {
 
     </form>
 
-    <div class="footer">BOK PEDRO • Beneficiary Registration</div>
+    <div class="footer">
+        BOK PEDRO • Beneficiary Registration
+    </div>
 
 </div>
 
 <script type="module">
+
 import { initializeApp } from
 "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 
@@ -229,13 +251,11 @@ const statusBox = document.getElementById("status");
 function showStatus(message, type) {
     statusBox.textContent = message;
     statusBox.className = type;
-}
-
-function onlyDigits(value) {
-    return /^[0-9]+$/.test(value);
+    statusBox.style.display = "block";
 }
 
 form.addEventListener("submit", async function(event) {
+
     event.preventDefault();
 
     const accountNumber =
@@ -254,12 +274,18 @@ form.addEventListener("submit", async function(event) {
         document.getElementById("branch").value.trim();
 
     if (!/^[0-9]{7}$/.test(accountNumber)) {
-        showStatus("رقم الحساب المختصر يجب أن يتكون من 7 أرقام.", "error");
+        showStatus(
+            "رقم الحساب المختصر يجب أن يتكون من 7 أرقام.",
+            "error"
+        );
         return;
     }
 
     if (!/^[0-9]{16}$/.test(accountNumber16)) {
-        showStatus("رقم الحساب الكامل يجب أن يتكون من 16 رقمًا.", "error");
+        showStatus(
+            "رقم الحساب الكامل يجب أن يتكون من 16 رقمًا.",
+            "error"
+        );
         return;
     }
 
@@ -268,19 +294,17 @@ form.addEventListener("submit", async function(event) {
         return;
     }
 
-    if (!onlyDigits(accountNumber) || !onlyDigits(accountNumber16)) {
-        showStatus("أرقام الحساب يجب أن تحتوي على أرقام فقط.", "error");
-        return;
-    }
-
     button.disabled = true;
     button.textContent = "جارٍ الإرسال...";
-    statusBox.className = "";
     statusBox.style.display = "none";
 
     try {
-        // الإرسال إلى requests مباشرة
-        const newRequestRef = push(ref(db, "requests"));
+
+        // الكتابة المباشرة إلى Firebase / requests
+        // لا توجد أي كتابة إلى beneficiaryRequests
+
+        const requestsRef = ref(db, "requests");
+        const newRequestRef = push(requestsRef);
 
         await set(newRequestRef, {
             accountNumber: accountNumber,
@@ -293,25 +317,31 @@ form.addEventListener("submit", async function(event) {
         });
 
         showStatus(
-            "تم إرسال البيانات بنجاح.",
+            "تم إرسال البيانات بنجاح إلى Firebase.",
             "success"
         );
 
         form.reset();
 
     } catch (error) {
-        console.error("Firebase error:", error);
+
+        console.error("Firebase write error:", error);
 
         showStatus(
-            "تعذر إرسال البيانات. تحقق من اتصال الإنترنت وصلاحيات Firebase.",
+            "فشل إرسال البيانات إلى Firebase. " +
+            "يرجى التحقق من الاتصال وقواعد قاعدة البيانات.",
             "error"
         );
 
     } finally {
+
         button.disabled = false;
         button.textContent = "إرسال البيانات";
+
     }
+
 });
+
 </script>
 
 </body>
