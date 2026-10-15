@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +100,8 @@ label {
     color: #dce8e1;
 }
 
-input, select {
+input,
+select {
     width: 100%;
     height: 51px;
     padding: 0 14px;
@@ -111,7 +113,8 @@ input, select {
     font-size: 15px;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
     border-color: #58d699;
     box-shadow: 0 0 0 3px #58d69915;
 }
@@ -205,7 +208,9 @@ button:disabled {
 
     <div class="brand">
         <div class="logo">BOK</div>
+
         <h1>BOK <span>PEDRO</span></h1>
+
         <p>نظام تسجيل بيانات المستفيدين</p>
     </div>
 
@@ -220,6 +225,7 @@ button:disabled {
         <form id="beneficiaryForm">
 
             <div class="field">
+
                 <label for="accountNumber">
                     رقم الحساب المختصر
                 </label>
@@ -238,9 +244,11 @@ button:disabled {
                 <div class="hint">
                     يجب أن يتكون من 7 أرقام.
                 </div>
+
             </div>
 
             <div class="field">
+
                 <label for="accountNumber16">
                     رقم الحساب الكامل
                 </label>
@@ -259,10 +267,14 @@ button:disabled {
                 <div class="hint">
                     يجب أن يتكون من 16 رقمًا.
                 </div>
+
             </div>
 
             <div class="field">
-                <label for="name">اسم المستفيد</label>
+
+                <label for="name">
+                    اسم المستفيد
+                </label>
 
                 <input
                     id="name"
@@ -270,21 +282,42 @@ button:disabled {
                     maxlength="120"
                     placeholder="أدخل الاسم الكامل"
                     required>
+
             </div>
 
             <div class="field">
-                <label for="accountType">نوع الحساب</label>
+
+                <label for="accountType">
+                    نوع الحساب
+                </label>
 
                 <select id="accountType" required>
-                    <option value="">اختر نوع الحساب</option>
-                    <option value="حساب توفير">حساب توفير</option>
-                    <option value="حساب جاري">حساب جاري</option>
-                    <option value="توفير مميز">توفير مميز</option>
+
+                    <option value="">
+                        اختر نوع الحساب
+                    </option>
+
+                    <option value="حساب توفير">
+                        حساب توفير
+                    </option>
+
+                    <option value="حساب جاري">
+                        حساب جاري
+                    </option>
+
+                    <option value="توفير مميز">
+                        توفير مميز
+                    </option>
+
                 </select>
+
             </div>
 
             <div class="field">
-                <label for="branch">الفرع</label>
+
+                <label for="branch">
+                    الفرع
+                </label>
 
                 <input
                     id="branch"
@@ -292,6 +325,7 @@ button:disabled {
                     maxlength="100"
                     placeholder="أدخل اسم الفرع"
                     required>
+
             </div>
 
             <button id="submitButton" type="submit">
@@ -306,6 +340,7 @@ button:disabled {
             </div>
 
         </form>
+
     </div>
 
     <div class="footer">
@@ -318,17 +353,21 @@ button:disabled {
 <script>
 "use strict";
 
-/*
- * BOK PEDRO
- * Firebase Realtime Database REST API
- */
+// ==========================================
+// إعداد Firebase
+// ==========================================
 
 const DATABASE_URL =
     "https://bok-ped-default-rtdb.firebaseio.com";
 
-const form = document.getElementById("beneficiaryForm");
-const button = document.getElementById("submitButton");
-const result = document.getElementById("result");
+const form =
+    document.getElementById("beneficiaryForm");
+
+const button =
+    document.getElementById("submitButton");
+
+const result =
+    document.getElementById("result");
 
 const accountNumberInput =
     document.getElementById("accountNumber");
@@ -337,36 +376,54 @@ const accountNumber16Input =
     document.getElementById("accountNumber16");
 
 
+// ==========================================
+// عرض الرسائل
+// ==========================================
+
 function showMessage(message, type) {
+
     result.textContent = message;
+
     result.className = "result " + type;
+
     result.style.display = "block";
 }
 
 
+// ==========================================
+// السماح بالأرقام الإنجليزية فقط
+// ==========================================
+
 function digitsOnly(input) {
+
     input.value = input.value.replace(/[^0-9]/g, "");
 }
-
 
 accountNumberInput.addEventListener("input", function() {
     digitsOnly(this);
 });
-
 
 accountNumber16Input.addEventListener("input", function() {
     digitsOnly(this);
 });
 
 
+// ==========================================
+// قراءة استجابة Firebase
+// ==========================================
+
 async function readResponse(response) {
+
     const text = await response.text();
 
     let data = null;
 
     try {
+
         data = text ? JSON.parse(text) : null;
-    } catch (e) {
+
+    } catch (error) {
+
         throw new Error(
             "استجابة غير مفهومة من Firebase. HTTP " +
             response.status
@@ -374,6 +431,7 @@ async function readResponse(response) {
     }
 
     if (!response.ok) {
+
         const firebaseError =
             data && data.error
                 ? data.error
@@ -385,6 +443,10 @@ async function readResponse(response) {
     return data;
 }
 
+
+// ==========================================
+// إرسال بيانات المستفيد
+// ==========================================
 
 form.addEventListener("submit", async function(event) {
 
@@ -410,153 +472,238 @@ form.addEventListener("submit", async function(event) {
         document.getElementById("branch").value.trim();
 
 
+    // ==========================================
+    // التحقق من رقم الحساب المختصر
+    // ==========================================
+
     if (!/^[0-9]{7}$/.test(accountNumber)) {
+
         showMessage(
             "رقم الحساب المختصر يجب أن يتكون من 7 أرقام.",
             "error"
         );
+
         return;
     }
 
 
+    // ==========================================
+    // التحقق من رقم الحساب الكامل
+    // ==========================================
+
     if (!/^[0-9]{16}$/.test(accountNumber16)) {
+
         showMessage(
             "رقم الحساب الكامل يجب أن يتكون من 16 رقمًا.",
             "error"
         );
+
         return;
     }
 
 
+    // ==========================================
+    // التحقق من بقية البيانات
+    // ==========================================
+
     if (!name || !accountType || !branch) {
+
         showMessage(
             "أكمل جميع البيانات المطلوبة.",
             "error"
         );
+
         return;
     }
 
 
-    const record = {
-        accountNumber: accountNumber,
-        accountNumber16: accountNumber16,
-        name: name,
-        accountType: accountType,
-        branch: branch,
-        status: "pending",
-        createdAt: {
-            ".sv": "timestamp"
-        }
-    };
-
+    // ==========================================
+    // تعطيل الزر أثناء العملية
+    // ==========================================
 
     button.disabled = true;
-    button.textContent = "جارٍ إرسال البيانات...";
+
+    button.textContent = "جارٍ التحقق والحفظ...";
+
     result.style.display = "none";
 
 
     try {
 
-        /*
-         * الخطوة الأولى:
-         * إرسال سجل جديد إلى requests.
-         *
-         * POST ينشئ مفتاحًا عشوائيًا جديدًا
-         * مثل Firebase push().
-         */
+        // ==========================================
+        // المسار المباشر باستخدام رقم الحساب
+        // requests/1234567
+        // ==========================================
 
-        const postResponse = await fetch(
-            DATABASE_URL + "/requests.json",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(record)
-            }
-        );
+        const recordUrl =
+            DATABASE_URL +
+            "/requests/" +
+            encodeURIComponent(accountNumber) +
+            ".json";
 
 
-        const savedKey = await readResponse(postResponse);
+        // ==========================================
+        // فحص وجود الحساب مسبقاً
+        // ==========================================
+
+        const checkResponse = await fetch(recordUrl, {
+            method: "GET",
+            cache: "no-store"
+        });
+
+        const existingRecord =
+            await readResponse(checkResponse);
 
 
-        if (!savedKey || typeof savedKey.name !== "string") {
-            throw new Error(
-                "Firebase لم يُرجع مفتاح السجل المحفوظ."
+        if (existingRecord !== null) {
+
+            showMessage(
+                "هذا الرقم موجود مسبقاً في قاعدة البيانات. " +
+                "لم تتم إضافة أي بيانات جديدة.",
+                "error"
             );
+
+            return;
         }
 
 
-        /*
-         * الخطوة الثانية:
-         * قراءة السجل الذي أُنشئ للتو.
-         * لن نعرض نجاحًا قبل التحقق من وجوده.
-         */
+        // ==========================================
+        // إعداد سجل المستفيد
+        // ==========================================
 
-        const verifyResponse = await fetch(
-            DATABASE_URL +
-            "/requests/" +
-            encodeURIComponent(savedKey.name) +
-            ".json",
-            {
-                method: "GET",
-                cache: "no-store"
+        const record = {
+
+            accountNumber: accountNumber,
+
+            accountNumber16: accountNumber16,
+
+            name: name,
+
+            accountType: accountType,
+
+            branch: branch,
+
+            status: "completed",
+
+            createdAt: {
+                ".sv": "timestamp"
             }
-        );
+
+        };
+
+
+        // ==========================================
+        // الحفظ بالمفتاح المحدد
+        // ==========================================
+
+        const saveResponse = await fetch(recordUrl, {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(record)
+
+        });
+
+
+        await readResponse(saveResponse);
+
+
+        // ==========================================
+        // قراءة البيانات للتحقق من الحفظ
+        // ==========================================
+
+        const verifyResponse = await fetch(recordUrl, {
+
+            method: "GET",
+
+            cache: "no-store"
+
+        });
 
 
         const savedRecord =
             await readResponse(verifyResponse);
 
 
+        // ==========================================
+        // التأكد من مطابقة البيانات
+        // ==========================================
+
         if (
             !savedRecord ||
+
             savedRecord.accountNumber !== accountNumber ||
+
             savedRecord.accountNumber16 !== accountNumber16 ||
+
             savedRecord.name !== name ||
+
             savedRecord.accountType !== accountType ||
-            savedRecord.branch !== branch
+
+            savedRecord.branch !== branch ||
+
+            savedRecord.status !== "completed"
         ) {
+
             throw new Error(
-                "تم إرسال الطلب، لكن تعذر التحقق من البيانات المحفوظة. " +
-                "مفتاح السجل: " + savedKey.name
+                "تعذر التحقق من جميع البيانات المحفوظة."
             );
         }
 
 
+        // ==========================================
+        // نجاح العملية
+        // ==========================================
+
         showMessage(
-            "تم حفظ البيانات والتحقق منها بنجاح. " +
-            "رقم الطلب: " + savedKey.name,
+            "تم حفظ بيانات المستفيد والتحقق منها بنجاح. " +
+            "رقم الحساب: " + accountNumber,
             "success"
         );
 
         form.reset();
 
+
         console.log(
-            "BOK PEDRO: Verified saved record",
-            savedKey.name
+            "BOK PEDRO: Saved and verified requests/" +
+            accountNumber
         );
 
 
     } catch (error) {
 
-        console.error("BOK PEDRO Firebase error:", error);
+        console.error(
+            "BOK PEDRO Firebase error:",
+            error
+        );
 
-        let message = "فشل حفظ البيانات: " + error.message;
+
+        let message =
+            "فشل حفظ البيانات: " + error.message;
+
 
         if (!navigator.onLine) {
+
             message =
                 "لا يوجد اتصال بالإنترنت. تحقق من الاتصال وحاول مرة أخرى.";
         }
 
+
         if (
             String(error.message).includes("PERMISSION_DENIED") ||
+
             String(error.message).includes("Permission denied")
         ) {
+
             message =
                 "Firebase رفض العملية بسبب الصلاحيات. " +
-                "راجع Rules الخاصة بمسار requests.";
+                "راجع قواعد Rules الخاصة بقاعدة البيانات.";
         }
+
 
         showMessage(message, "error");
 
@@ -564,6 +711,7 @@ form.addEventListener("submit", async function(event) {
     } finally {
 
         button.disabled = false;
+
         button.textContent = "إرسال البيانات";
 
     }
