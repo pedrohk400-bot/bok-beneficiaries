@@ -15,14 +15,12 @@
 <style>
 :root {
     --bg: #080204;
-    --card: rgba(24, 8, 12, .94);
+    --card: rgba(24, 8, 12, .96);
     --red: #ff243c;
-    --red2: #c90024;
     --text: #fff4f5;
     --muted: #b99da2;
     --border: rgba(255, 47, 70, .24);
     --input: #100609;
-    --green: #55e6a0;
 }
 
 * {
@@ -45,8 +43,8 @@ body {
     align-items: center;
     color: var(--text);
     background:
-        radial-gradient(ellipse at 50% 0%, rgba(180, 0, 30, .25), transparent 48%),
-        radial-gradient(circle at bottom right, rgba(100, 0, 20, .15), transparent 40%),
+        radial-gradient(ellipse at 50% 0%, rgba(180,0,30,.25), transparent 48%),
+        radial-gradient(circle at bottom right, rgba(100,0,20,.15), transparent 40%),
         linear-gradient(145deg, #080204, #130509 52%, #070203);
 }
 
@@ -55,8 +53,6 @@ body {
     max-width: 460px;
     margin: auto;
 }
-
-/* العلامة */
 
 .brand {
     text-align: center;
@@ -72,20 +68,16 @@ body {
     justify-content: center;
     border-radius: 24px;
     background: linear-gradient(145deg, #ff3048, #830018);
-    border: 1px solid rgba(255, 130, 145, .5);
-    box-shadow:
-        0 0 35px rgba(255, 20, 50, .22),
-        inset 0 1px 0 rgba(255,255,255,.2);
+    border: 1px solid rgba(255,130,145,.5);
+    box-shadow: 0 0 35px rgba(255,20,50,.22);
     color: white;
     font-size: 26px;
     font-weight: 900;
-    letter-spacing: 1px;
 }
 
 .brand h1 {
     font-size: 29px;
     font-weight: 900;
-    letter-spacing: 1px;
 }
 
 .brand h1 span {
@@ -96,10 +88,7 @@ body {
     margin-top: 8px;
     color: var(--muted);
     font-size: 13px;
-    font-weight: 500;
 }
-
-/* البطاقة */
 
 .card {
     position: relative;
@@ -107,14 +96,8 @@ body {
     padding: 25px 21px;
     border: 1px solid var(--border);
     border-radius: 25px;
-    background: linear-gradient(
-        145deg,
-        rgba(29, 9, 14, .97),
-        rgba(13, 5, 8, .98)
-    );
-    box-shadow:
-        0 25px 75px rgba(0,0,0,.55),
-        0 0 35px rgba(200,0,35,.06);
+    background: linear-gradient(145deg, rgba(29,9,14,.98), rgba(13,5,8,.99));
+    box-shadow: 0 25px 75px rgba(0,0,0,.55);
 }
 
 .card::before {
@@ -124,12 +107,7 @@ body {
     right: 12%;
     width: 76%;
     height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--red),
-        transparent
-    );
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
 }
 
 .card h2 {
@@ -145,8 +123,6 @@ body {
     margin-bottom: 24px;
 }
 
-/* الحقول */
-
 .field {
     margin-bottom: 18px;
 }
@@ -159,8 +135,7 @@ label {
     font-weight: 700;
 }
 
-input,
-select {
+input, select {
     display: block;
     width: 100%;
     height: 53px;
@@ -172,11 +147,10 @@ select {
     outline: none;
     font-size: 14px;
     font-weight: 600;
-    transition: border-color .2s, box-shadow .2s, background .2s;
+    transition: .2s;
 }
 
-input:focus,
-select:focus {
+input:focus, select:focus {
     border-color: var(--red);
     background: #16070b;
     box-shadow: 0 0 0 3px rgba(255,36,60,.12);
@@ -209,8 +183,6 @@ select option {
     line-height: 1.8;
 }
 
-/* الأزرار */
-
 button {
     width: 100%;
     min-height: 53px;
@@ -224,7 +196,7 @@ button {
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 9px 24px rgba(220,0,35,.16);
-    transition: transform .18s, opacity .18s, box-shadow .18s;
+    transition: transform .18s, opacity .18s;
 }
 
 button:active {
@@ -248,11 +220,13 @@ button:disabled {
     box-shadow: none;
 }
 
-.search-button:active {
-    background: #350b14;
+.secondary-button {
+    margin-top: 12px;
+    color: #ffdce1;
+    background: #21080e;
+    border: 1px solid #65202d;
+    box-shadow: none;
 }
-
-/* الرسائل */
 
 .result {
     display: none;
@@ -268,25 +242,23 @@ button:disabled {
 .result.success {
     display: block;
     color: #a9ffd0;
-    background: rgba(15, 75, 43, .28);
-    border: 1px solid rgba(63, 220, 135, .32);
+    background: rgba(15,75,43,.28);
+    border: 1px solid rgba(63,220,135,.32);
 }
 
 .result.error {
     display: block;
     color: #ffc1c8;
-    background: rgba(100, 8, 25, .28);
-    border: 1px solid rgba(255, 55, 80, .34);
+    background: rgba(100,8,25,.28);
+    border: 1px solid rgba(255,55,80,.34);
 }
 
 .result.info {
     display: block;
     color: #ffd9df;
-    background: rgba(90, 20, 35, .25);
-    border: 1px solid rgba(255, 70, 95, .25);
+    background: rgba(90,20,35,.25);
+    border: 1px solid rgba(255,70,95,.25);
 }
-
-/* حالة التعديل */
 
 .mode {
     display: none;
@@ -294,8 +266,8 @@ button:disabled {
     padding: 10px 12px;
     border-radius: 11px;
     color: #ffd3da;
-    background: rgba(190, 0, 35, .13);
-    border: 1px solid rgba(255, 50, 75, .27);
+    background: rgba(190,0,35,.13);
+    border: 1px solid rgba(255,50,75,.27);
     font-size: 12px;
     font-weight: 700;
     line-height: 1.9;
@@ -349,20 +321,16 @@ button:disabled {
         <h2>بيانات المستفيد</h2>
 
         <p class="description">
-            أضف مستفيداً جديداً أو ابحث عن مستفيد مسجل لتعديل بياناته
-            مع الاحتفاظ ببقية بيانات الطلب.
+            أضف مستفيداً جديداً أو ابحث عن مستفيد مسجل
+            لتعديل بياناته مع الاحتفاظ ببقية بيانات الطلب.
         </p>
 
-        <div id="mode" class="mode">
-            وضع التعديل: تم تحميل بيانات مستفيد موجود.
-        </div>
+        <div id="mode" class="mode"></div>
 
         <form id="beneficiaryForm">
 
             <div class="field">
-                <label for="accountNumber">
-                    رقم الحساب المختصر
-                </label>
+                <label for="accountNumber">رقم الحساب المختصر</label>
 
                 <input
                     id="accountNumber"
@@ -388,9 +356,7 @@ button:disabled {
             </button>
 
             <div class="field">
-                <label for="accountNumber16">
-                    رقم الحساب الكامل
-                </label>
+                <label for="accountNumber16">رقم الحساب الكامل</label>
 
                 <input
                     id="accountNumber16"
@@ -403,15 +369,11 @@ button:disabled {
                     autocomplete="off"
                     required>
 
-                <div class="hint">
-                    يجب أن يتكون من 16 رقماً.
-                </div>
+                <div class="hint">يجب أن يتكون من 16 رقماً.</div>
             </div>
 
             <div class="field">
-                <label for="name">
-                    اسم المستفيد
-                </label>
+                <label for="name">اسم المستفيد</label>
 
                 <input
                     id="name"
@@ -423,9 +385,7 @@ button:disabled {
             </div>
 
             <div class="field">
-                <label for="accountType">
-                    نوع الحساب
-                </label>
+                <label for="accountType">نوع الحساب</label>
 
                 <select id="accountType" required>
                     <option value="">اختر نوع الحساب</option>
@@ -436,9 +396,7 @@ button:disabled {
             </div>
 
             <div class="field">
-                <label for="branch">
-                    الفرع
-                </label>
+                <label for="branch">الفرع</label>
 
                 <input
                     id="branch"
@@ -450,6 +408,13 @@ button:disabled {
 
             <button id="submitButton" type="submit">
                 إضافة المستفيد
+            </button>
+
+            <button
+                id="resetButton"
+                class="secondary-button"
+                type="button">
+                مسح الحقول / إلغاء التعديل
             </button>
 
             <div
@@ -473,7 +438,7 @@ button:disabled {
 "use strict";
 
 // ==========================================
-// إعداد Firebase
+// إعداد قاعدة Firebase
 // ==========================================
 
 const DATABASE_URL =
@@ -482,6 +447,7 @@ const DATABASE_URL =
 const form = document.getElementById("beneficiaryForm");
 const button = document.getElementById("submitButton");
 const searchButton = document.getElementById("searchButton");
+const resetButton = document.getElementById("resetButton");
 const result = document.getElementById("result");
 const mode = document.getElementById("mode");
 
@@ -515,9 +481,15 @@ function showMessage(message, type) {
     result.style.display = "block";
 }
 
+function clearMessage() {
+    result.textContent = "";
+    result.className = "result";
+    result.style.display = "none";
+}
+
 
 // ==========================================
-// حالة إضافة / تعديل
+// وضع الإضافة أو التعديل
 // ==========================================
 
 function setEditingState(isEditing, accountNumber) {
@@ -526,13 +498,16 @@ function setEditingState(isEditing, accountNumber) {
 
     if (isEditing) {
         button.textContent = "حفظ التعديلات";
+
         mode.className = "mode active";
+
         mode.textContent =
-            "وضع التعديل: تم تحميل بيانات المستفيد " +
+            "وضع التعديل: المستفيد رقم " +
             accountNumber +
-            ". سيتم الاحتفاظ ببقية بيانات الطلب.";
+            " محمّل. سيتم الاحتفاظ ببقية بيانات الطلب.";
     } else {
         button.textContent = "إضافة المستفيد";
+
         mode.className = "mode";
         mode.textContent = "";
     }
@@ -540,7 +515,7 @@ function setEditingState(isEditing, accountNumber) {
 
 
 // ==========================================
-// تنظيف أرقام الحساب
+// تنظيف الأرقام
 // ==========================================
 
 function digitsOnly(input) {
@@ -555,8 +530,9 @@ accountNumberInput.addEventListener("input", function() {
         this.value.trim() !== loadedAccountNumber
     ) {
         setEditingState(false, "");
+
         showMessage(
-            "تغير رقم الحساب. ابحث عن المستفيد مرة أخرى قبل التعديل.",
+            "تغيّر رقم الحساب. ابحث عن المستفيد مرة أخرى قبل التعديل.",
             "info"
         );
     }
@@ -568,11 +544,12 @@ accountNumber16Input.addEventListener("input", function() {
 
 
 // ==========================================
-// استجابة Firebase
+// قراءة استجابة Firebase
 // ==========================================
 
 async function readResponse(response) {
     const text = await response.text();
+
     let data = null;
 
     try {
@@ -598,7 +575,7 @@ async function readResponse(response) {
 
 
 // ==========================================
-// رابط المستفيد
+// رابط السجل
 // ==========================================
 
 function getRecordUrl(accountNumber) {
@@ -607,6 +584,26 @@ function getRecordUrl(accountNumber) {
         encodeURIComponent(accountNumber) +
         ".json";
 }
+
+
+// ==========================================
+// إعادة تعيين الحقول
+// ==========================================
+
+function resetForm() {
+    if (busy) {
+        return;
+    }
+
+    form.reset();
+
+    setEditingState(false, "");
+    clearMessage();
+
+    accountNumberInput.focus();
+}
+
+resetButton.addEventListener("click", resetForm);
 
 
 // ==========================================
@@ -630,8 +627,10 @@ async function loadBeneficiary() {
     }
 
     busy = true;
+
     searchButton.disabled = true;
     button.disabled = true;
+
     searchButton.textContent = "جارٍ البحث...";
 
     try {
@@ -646,12 +645,12 @@ async function loadBeneficiary() {
         const record = await readResponse(response);
 
         if (record === null) {
-            setEditingState(false, "");
-
             accountNumber16Input.value = "";
             nameInput.value = "";
             accountTypeInput.value = "";
             branchInput.value = "";
+
+            setEditingState(false, "");
 
             showMessage(
                 "لا يوجد مستفيد بهذا الرقم. أكمل البيانات ثم اضغط إضافة المستفيد.",
@@ -659,6 +658,10 @@ async function loadBeneficiary() {
             );
 
             return;
+        }
+
+        if (typeof record !== "object") {
+            throw new Error("بيانات المستفيد في Firebase غير صالحة.");
         }
 
         accountNumber16Input.value =
@@ -676,7 +679,7 @@ async function loadBeneficiary() {
         setEditingState(true, accountNumber);
 
         showMessage(
-            "تم العثور على المستفيد وتحميل بياناته. عدّل الحقول المطلوبة ثم احفظ التغييرات.",
+            "تم العثور على المستفيد وتحميل بياناته. عدّل الحقول المطلوبة ثم اضغط حفظ التعديلات.",
             "success"
         );
 
@@ -690,29 +693,23 @@ async function loadBeneficiary() {
 
     } finally {
         busy = false;
+
         searchButton.disabled = false;
         button.disabled = false;
+
         searchButton.textContent = "🔍 البحث عن المستفيد";
 
-        if (editingExisting) {
-            button.textContent = "حفظ التعديلات";
-        } else {
-            button.textContent = "إضافة المستفيد";
-        }
+        button.textContent = editingExisting
+            ? "حفظ التعديلات"
+            : "إضافة المستفيد";
     }
 }
 
 searchButton.addEventListener("click", loadBeneficiary);
 
-accountNumberInput.addEventListener("change", function() {
-    if (/^[0-9]{7}$/.test(this.value.trim())) {
-        loadBeneficiary();
-    }
-});
-
 
 // ==========================================
-// حفظ أو تعديل بيانات المستفيد
+// الحفظ أو التعديل
 // ==========================================
 
 form.addEventListener("submit", async function(event) {
@@ -762,15 +759,18 @@ form.addEventListener("submit", async function(event) {
     }
 
     busy = true;
+
     button.disabled = true;
     searchButton.disabled = true;
+
     button.textContent = "جارٍ الحفظ...";
-    result.style.display = "none";
+
+    clearMessage();
 
     try {
         const recordUrl = getRecordUrl(accountNumber);
 
-        // قراءة السجل الحالي قبل تحديد عملية الحفظ
+        // قراءة السجل الحالي
         const checkResponse = await fetch(
             recordUrl,
             {
@@ -784,8 +784,7 @@ form.addEventListener("submit", async function(event) {
 
         const isEditing = existingRecord !== null;
 
-        // لا نعدّل سجلاً موجوداً ما لم نحمّل بياناته
-        // أولاً عن طريق زر البحث.
+        // لا تسمح بتعديل سجل لم يتم تحميله أولاً
         if (
             isEditing &&
             (
@@ -794,12 +793,14 @@ form.addEventListener("submit", async function(event) {
             )
         ) {
             showMessage(
-                "هذا المستفيد مسجل بالفعل. اضغط «البحث عن المستفيد» وحمّل بياناته قبل التعديل.",
+                "هذا المستفيد مسجل بالفعل. اضغط البحث عن المستفيد وحمّل بياناته قبل التعديل.",
                 "error"
             );
+
             return;
         }
 
+        // الحقول المطلوب تعديلها فقط
         const beneficiaryData = {
             accountNumber: accountNumber,
             accountNumber16: accountNumber16,
@@ -812,12 +813,29 @@ form.addEventListener("submit", async function(event) {
         let saveBody;
 
         if (isEditing) {
-            // تحديث الحقول الخمسة فقط.
-            // بقية بيانات الطلب لن تُحذف.
+            /*
+             * PATCH يعدّل الحقول المحددة فقط.
+             * لا يستبدل السجل كاملاً، ولذلك يحتفظ
+             * بالحقول الأخرى مثل uid وcreatedAt.
+             */
             saveMethod = "PATCH";
-            saveBody = beneficiaryData;
+
+            saveBody = Object.assign(
+                {},
+                beneficiaryData,
+                {
+                    status: "completed",
+                    updatedAt: { ".sv": "timestamp" }
+                }
+            );
+
+            /*
+             * لا نرسل updatedBy لأن صفحة الإضافة
+             * لا تسجل دخول المدير.
+             */
+
         } else {
-            // إنشاء سجل جديد
+            // إنشاء مستفيد جديد
             saveMethod = "PUT";
 
             saveBody = {
@@ -833,6 +851,7 @@ form.addEventListener("submit", async function(event) {
             };
         }
 
+        // حفظ البيانات
         const saveResponse = await fetch(
             recordUrl,
             {
@@ -840,13 +859,14 @@ form.addEventListener("submit", async function(event) {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(saveBody)
+                body: JSON.stringify(saveBody),
+                cache: "no-store"
             }
         );
 
         await readResponse(saveResponse);
 
-        // إعادة قراءة السجل للتأكد من الحفظ
+        // التحقق من نجاح الحفظ
         const verifyResponse = await fetch(
             recordUrl,
             {
@@ -860,14 +880,13 @@ form.addEventListener("submit", async function(event) {
 
         if (
             !savedRecord ||
-            savedRecord.accountNumber !== accountNumber ||
             savedRecord.accountNumber16 !== accountNumber16 ||
             savedRecord.name !== name ||
             savedRecord.accountType !== accountType ||
             savedRecord.branch !== branch
         ) {
             throw new Error(
-                "تعذر التحقق من البيانات بعد الحفظ."
+                "لم تتطابق البيانات المحفوظة مع البيانات المدخلة."
             );
         }
 
@@ -875,12 +894,12 @@ form.addEventListener("submit", async function(event) {
 
         if (isEditing) {
             showMessage(
-                "تم تحديث بيانات المستفيد بنجاح. تم الاحتفاظ ببقية حقول الطلب.",
+                "✅ تم تحديث بيانات المستفيد بنجاح، مع الاحتفاظ ببقية بيانات الطلب.",
                 "success"
             );
         } else {
             showMessage(
-                "تمت إضافة المستفيد وحفظ البيانات بنجاح.",
+                "✅ تمت إضافة المستفيد وحفظ البيانات بنجاح.",
                 "success"
             );
         }
@@ -906,13 +925,14 @@ form.addEventListener("submit", async function(event) {
             String(error.message).includes("Permission denied")
         ) {
             message =
-                "Firebase رفض العملية بسبب الصلاحيات. راجع قواعد Rules.";
+                "Firebase رفض العملية بسبب الصلاحيات. تحقق من قواعد Rules المنشورة.";
         }
 
         showMessage(message, "error");
 
     } finally {
         busy = false;
+
         button.disabled = false;
         searchButton.disabled = false;
 
