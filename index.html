@@ -1,3 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100305">
+
+<title>BOK PEDRO | بيانات المستفيدين</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #080204;
+    --card: rgba(24, 8, 12, .94);
+    --red: #ff243c;
+    --red2: #c90024;
+    --text: #fff4f5;
+    --muted: #b99da2;
+    --border: rgba(255, 47, 70, .24);
+    --input: #100609;
+    --green: #55e6a0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+html {
+    min-height: 100%;
+    background: var(--bg);
+}
+
+body {
+    min-height: 100vh;
+    padding: 28px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(180, 0, 30, .25), transparent 48%),
+        radial-gradient(circle at bottom right, rgba(100, 0, 20, .15), transparent 40%),
+        linear-gradient(145deg, #080204, #130509 52%, #070203);
+}
+
+.container {
+    width: 100%;
+    max-width: 460px;
+    margin: auto;
+}
+
+/* العلامة */
+
+.brand {
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.logo {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #ff3048, #830018);
+    border: 1px solid rgba(255, 130, 145, .5);
+    box-shadow:
+        0 0 35px rgba(255, 20, 50, .22),
+        inset 0 1px 0 rgba(255,255,255,.2);
+    color: white;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.brand h1 {
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.brand h1 span {
+    color: var(--red);
+}
+
+.brand p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* البطاقة */
+
+.card {
+    position: relative;
+    overflow: hidden;
+    padding: 25px 21px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background: linear-gradient(
+        145deg,
+        rgba(29, 9, 14, .97),
+        rgba(13, 5, 8, .98)
+    );
+    box-shadow:
+        0 25px 75px rgba(0,0,0,.55),
+        0 0 35px rgba(200,0,35,.06);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 12%;
+    width: 76%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+    );
+}
+
+.card h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+    margin-bottom: 24px;
+}
+
+/* الحقول */
+
+.field {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f7dfe2;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input,
+select {
+    display: block;
+    width: 100%;
+    height: 53px;
+    padding: 0 14px;
+    border: 1px solid #45232b;
+    border-radius: 13px;
+    background: var(--input);
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--red);
+    background: #16070b;
+    box-shadow: 0 0 0 3px rgba(255,36,60,.12);
+}
+
+input::placeholder {
+    color: #816970;
+    font-weight: 400;
+}
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #16070b;
+    color: #fff;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+    letter-spacing: 1.5px;
+}
+
+.hint {
+    margin-top: 6px;
+    color: #95777e;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* الأزرار */
+
+button {
+    width: 100%;
+    min-height: 53px;
+    margin-top: 5px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,100,120,.25);
+    border-radius: 14px;
+    background: linear-gradient(110deg, #a90022, #ff263f);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 9px 24px rgba(220,0,35,.16);
+    transition: transform .18s, opacity .18s, box-shadow .18s;
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.search-button {
+    margin-top: 0;
+    margin-bottom: 18px;
+    min-height: 45px;
+    font-size: 13px;
+    color: #ffdce1;
+    background: #21080e;
+    border: 1px solid #65202d;
+    box-shadow: none;
+}
+
+.search-button:active {
+    background: #350b14;
+}
+
+/* الرسائل */
+
+.result {
+    display: none;
+    padding: 13px 14px;
+    margin-top: 17px;
+    border-radius: 13px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    overflow-wrap: anywhere;
+}
+
+.result.success {
+    display: block;
+    color: #a9ffd0;
+    background: rgba(15, 75, 43, .28);
+    border: 1px solid rgba(63, 220, 135, .32);
+}
+
+.result.error {
+    display: block;
+    color: #ffc1c8;
+    background: rgba(100, 8, 25, .28);
+    border: 1px solid rgba(255, 55, 80, .34);
+}
+
+.result.info {
+    display: block;
+    color: #ffd9df;
+    background: rgba(90, 20, 35, .25);
+    border: 1px solid rgba(255, 70, 95, .25);
+}
+
+/* حالة التعديل */
+
+.mode {
+    display: none;
+    margin: 0 0 17px;
+    padding: 10px 12px;
+    border-radius: 11px;
+    color: #ffd3da;
+    background: rgba(190, 0, 35, .13);
+    border: 1px solid rgba(255, 50, 75, .27);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.9;
+}
+
+.mode.active {
+    display: block;
+}
+
+.footer {
+    margin-top: 23px;
+    text-align: center;
+    color: #876c73;
+    font-size: 11px;
+    line-height: 2.2;
+}
+
+.footer strong {
+    color: #ff5a70;
+    font-weight: 800;
+}
+
+@media(max-width:360px) {
+    body {
+        padding: 20px 11px;
+    }
+
+    .card {
+        padding: 21px 15px;
+    }
+
+    .brand h1 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="brand">
+        <div class="logo">BOK</div>
+        <h1>BOK <span>PEDRO</span></h1>
+        <p>نظام إدارة بيانات المستفيدين</p>
+    </div>
+
+    <div class="card">
+
+        <h2>بيانات المستفيد</h2>
+
+        <p class="description">
+            أضف مستفيداً جديداً أو ابحث عن مستفيد مسجل لتعديل بياناته
+            مع الاحتفاظ ببقية بيانات الطلب.
+        </p>
+
+        <div id="mode" class="mode">
+            وضع التعديل: تم تحميل بيانات مستفيد موجود.
+        </div>
+
+        <form id="beneficiaryForm">
+
+            <div class="field">
+                <label for="accountNumber">
+                    رقم الحساب المختصر
+                </label>
+
+                <input
+                    id="accountNumber"
+                    class="ltr"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="7"
+                    pattern="[0-9]{7}"
+                    placeholder="0000000"
+                    autocomplete="off"
+                    required>
+
+                <div class="hint">
+                    أدخل 7 أرقام للبحث عن المستفيد أو إضافته.
+                </div>
+            </div>
+
+            <button
+                id="searchButton"
+                class="search-button"
+                type="button">
+                🔍 البحث عن المستفيد
+            </button>
+
+            <div class="field">
+                <label for="accountNumber16">
+                    رقم الحساب الكامل
+                </label>
+
+                <input
+                    id="accountNumber16"
+                    class="ltr"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="16"
+                    pattern="[0-9]{16}"
+                    placeholder="0000000000000000"
+                    autocomplete="off"
+                    required>
+
+                <div class="hint">
+                    يجب أن يتكون من 16 رقماً.
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="name">
+                    اسم المستفيد
+                </label>
+
+                <input
+                    id="name"
+                    type="text"
+                    maxlength="120"
+                    placeholder="أدخل الاسم الكامل"
+                    autocomplete="name"
+                    required>
+            </div>
+
+            <div class="field">
+                <label for="accountType">
+                    نوع الحساب
+                </label>
+
+                <select id="accountType" required>
+                    <option value="">اختر نوع الحساب</option>
+                    <option value="حساب توفير">حساب توفير</option>
+                    <option value="حساب جاري">حساب جاري</option>
+                    <option value="توفير مميز">توفير مميز</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="branch">
+                    الفرع
+                </label>
+
+                <input
+                    id="branch"
+                    type="text"
+                    maxlength="100"
+                    placeholder="أدخل اسم الفرع"
+                    required>
+            </div>
+
+            <button id="submitButton" type="submit">
+                إضافة المستفيد
+            </button>
+
+            <div
+                id="result"
+                class="result"
+                role="status"
+                aria-live="polite">
+            </div>
+
+        </form>
+    </div>
+
+    <div class="footer">
+        <strong>BOK PEDRO</strong><br>
+        نظام إدارة بيانات المستفيدين
+    </div>
+
+</div>
+
 <script>
 "use strict";
 
@@ -10,7 +481,9 @@ const DATABASE_URL =
 
 const form = document.getElementById("beneficiaryForm");
 const button = document.getElementById("submitButton");
+const searchButton = document.getElementById("searchButton");
 const result = document.getElementById("result");
+const mode = document.getElementById("mode");
 
 const accountNumberInput =
     document.getElementById("accountNumber");
@@ -27,13 +500,8 @@ const accountTypeInput =
 const branchInput =
     document.getElementById("branch");
 
-// هل الصفحة تعدّل مستفيداً موجوداً؟
 let editingExisting = false;
-
-// رقم المستفيد الذي تم تحميل بياناته
 let loadedAccountNumber = "";
-
-// منع تنفيذ عمليتين في نفس الوقت
 let busy = false;
 
 
@@ -49,6 +517,29 @@ function showMessage(message, type) {
 
 
 // ==========================================
+// حالة إضافة / تعديل
+// ==========================================
+
+function setEditingState(isEditing, accountNumber) {
+    editingExisting = isEditing;
+    loadedAccountNumber = isEditing ? accountNumber : "";
+
+    if (isEditing) {
+        button.textContent = "حفظ التعديلات";
+        mode.className = "mode active";
+        mode.textContent =
+            "وضع التعديل: تم تحميل بيانات المستفيد " +
+            accountNumber +
+            ". سيتم الاحتفاظ ببقية بيانات الطلب.";
+    } else {
+        button.textContent = "إضافة المستفيد";
+        mode.className = "mode";
+        mode.textContent = "";
+    }
+}
+
+
+// ==========================================
 // تنظيف أرقام الحساب
 // ==========================================
 
@@ -59,15 +550,15 @@ function digitsOnly(input) {
 accountNumberInput.addEventListener("input", function() {
     digitsOnly(this);
 
-    // إذا غيّر المستخدم رقم الحساب بعد تحميل البيانات،
-    // نلغي وضع التعديل حتى لا يعدّل سجل المستفيد الخطأ.
     if (
         editingExisting &&
         this.value.trim() !== loadedAccountNumber
     ) {
-        editingExisting = false;
-        loadedAccountNumber = "";
-        button.textContent = "إضافة المستفيد";
+        setEditingState(false, "");
+        showMessage(
+            "تغير رقم الحساب. ابحث عن المستفيد مرة أخرى قبل التعديل.",
+            "info"
+        );
     }
 });
 
@@ -77,12 +568,11 @@ accountNumber16Input.addEventListener("input", function() {
 
 
 // ==========================================
-// قراءة استجابة Firebase
+// استجابة Firebase
 // ==========================================
 
 async function readResponse(response) {
     const text = await response.text();
-
     let data = null;
 
     try {
@@ -108,7 +598,7 @@ async function readResponse(response) {
 
 
 // ==========================================
-// إنشاء رابط سجل المستفيد
+// رابط المستفيد
 // ==========================================
 
 function getRecordUrl(accountNumber) {
@@ -120,7 +610,7 @@ function getRecordUrl(accountNumber) {
 
 
 // ==========================================
-// البحث عن مستفيد وتحميل بياناته
+// البحث عن مستفيد
 // ==========================================
 
 async function loadBeneficiary() {
@@ -133,15 +623,16 @@ async function loadBeneficiary() {
 
     if (!/^[0-9]{7}$/.test(accountNumber)) {
         showMessage(
-            "أدخل رقم الحساب المختصر المكوّن من 7 أرقام أولاً.",
+            "أدخل رقم الحساب المختصر المكوّن من 7 أرقام.",
             "error"
         );
         return;
     }
 
     busy = true;
+    searchButton.disabled = true;
     button.disabled = true;
-    button.textContent = "جارٍ البحث...";
+    searchButton.textContent = "جارٍ البحث...";
 
     try {
         const response = await fetch(
@@ -155,20 +646,21 @@ async function loadBeneficiary() {
         const record = await readResponse(response);
 
         if (record === null) {
-            editingExisting = false;
-            loadedAccountNumber = "";
+            setEditingState(false, "");
 
-            button.textContent = "إضافة المستفيد";
+            accountNumber16Input.value = "";
+            nameInput.value = "";
+            accountTypeInput.value = "";
+            branchInput.value = "";
 
             showMessage(
-                "لا يوجد سجل بهذا الرقم. أكمل البيانات ثم اضغط إضافة المستفيد.",
-                "success"
+                "لا يوجد مستفيد بهذا الرقم. أكمل البيانات ثم اضغط إضافة المستفيد.",
+                "info"
             );
 
             return;
         }
 
-        // تعبئة الحقول الموجودة في السجل
         accountNumber16Input.value =
             record.accountNumber16 || "";
 
@@ -181,34 +673,36 @@ async function loadBeneficiary() {
         branchInput.value =
             record.branch || "";
 
-        editingExisting = true;
-        loadedAccountNumber = accountNumber;
-
-        button.textContent = "حفظ التعديلات";
+        setEditingState(true, accountNumber);
 
         showMessage(
-            "تم العثور على المستفيد وتحميل بياناته. عدّل المطلوب ثم اضغط حفظ التعديلات.",
+            "تم العثور على المستفيد وتحميل بياناته. عدّل الحقول المطلوبة ثم احفظ التغييرات.",
             "success"
         );
 
     } catch (error) {
-        console.error("Load beneficiary error:", error);
+        console.error("Beneficiary search error:", error);
 
         showMessage(
-            "تعذر تحميل البيانات: " + error.message,
+            "تعذر البحث عن المستفيد: " + error.message,
             "error"
         );
 
     } finally {
         busy = false;
+        searchButton.disabled = false;
         button.disabled = false;
+        searchButton.textContent = "🔍 البحث عن المستفيد";
+
+        if (editingExisting) {
+            button.textContent = "حفظ التعديلات";
+        } else {
+            button.textContent = "إضافة المستفيد";
+        }
     }
 }
 
-
-// ==========================================
-// البحث عند مغادرة حقل رقم الحساب
-// ==========================================
+searchButton.addEventListener("click", loadBeneficiary);
 
 accountNumberInput.addEventListener("change", function() {
     if (/^[0-9]{7}$/.test(this.value.trim())) {
@@ -218,7 +712,7 @@ accountNumberInput.addEventListener("change", function() {
 
 
 // ==========================================
-// حفظ مستفيد جديد أو تعديل مستفيد موجود
+// حفظ أو تعديل بيانات المستفيد
 // ==========================================
 
 form.addEventListener("submit", async function(event) {
@@ -242,10 +736,6 @@ form.addEventListener("submit", async function(event) {
 
     const branch =
         branchInput.value.trim();
-
-    // ==========================================
-    // التحقق من المدخلات
-    // ==========================================
 
     if (!/^[0-9]{7}$/.test(accountNumber)) {
         showMessage(
@@ -273,14 +763,14 @@ form.addEventListener("submit", async function(event) {
 
     busy = true;
     button.disabled = true;
+    searchButton.disabled = true;
     button.textContent = "جارٍ الحفظ...";
     result.style.display = "none";
 
     try {
         const recordUrl = getRecordUrl(accountNumber);
 
-        // نعيد قراءة السجل قبل التعديل حتى لا نستبدل
-        // بيانات الطلب القديمة أو نضيف فوق سجل غير متوقع.
+        // قراءة السجل الحالي قبل تحديد عملية الحفظ
         const checkResponse = await fetch(
             recordUrl,
             {
@@ -292,25 +782,23 @@ form.addEventListener("submit", async function(event) {
         const existingRecord =
             await readResponse(checkResponse);
 
-        const isEditing =
-            existingRecord !== null;
+        const isEditing = existingRecord !== null;
 
-        // إذا كان السجل موجوداً، لا نسمح بتغيير المفتاح
-        // أو التعامل مع سجل آخر على أنه نفس المستفيد.
+        // لا نعدّل سجلاً موجوداً ما لم نحمّل بياناته
+        // أولاً عن طريق زر البحث.
         if (
             isEditing &&
-            loadedAccountNumber !== accountNumber
+            (
+                !editingExisting ||
+                loadedAccountNumber !== accountNumber
+            )
         ) {
             showMessage(
-                "هذا المستفيد موجود بالفعل. ابحث عن بياناته أولاً ثم عدّلها.",
+                "هذا المستفيد مسجل بالفعل. اضغط «البحث عن المستفيد» وحمّل بياناته قبل التعديل.",
                 "error"
             );
             return;
         }
-
-        // ==========================================
-        // إعداد بيانات المستفيد فقط
-        // ==========================================
 
         const beneficiaryData = {
             accountNumber: accountNumber,
@@ -320,26 +808,16 @@ form.addEventListener("submit", async function(event) {
             branch: branch
         };
 
-        let saveUrl;
         let saveMethod;
         let saveBody;
 
         if (isEditing) {
-            /*
-             * PATCH يحدّث الحقول المحددة فقط.
-             * يحتفظ ببقية الحقول في الطلب، مثل status
-             * وcreatedAt وأي بيانات أخرى موجودة.
-             */
-            saveUrl = recordUrl;
+            // تحديث الحقول الخمسة فقط.
+            // بقية بيانات الطلب لن تُحذف.
             saveMethod = "PATCH";
             saveBody = beneficiaryData;
-
         } else {
-            /*
-             * سجل جديد.
-             * PUT هنا ينشئ السجل كاملاً لأنه غير موجود.
-             */
-            saveUrl = recordUrl;
+            // إنشاء سجل جديد
             saveMethod = "PUT";
 
             saveBody = {
@@ -356,7 +834,7 @@ form.addEventListener("submit", async function(event) {
         }
 
         const saveResponse = await fetch(
-            saveUrl,
+            recordUrl,
             {
                 method: saveMethod,
                 headers: {
@@ -368,10 +846,7 @@ form.addEventListener("submit", async function(event) {
 
         await readResponse(saveResponse);
 
-        // ==========================================
-        // التحقق من الحفظ
-        // ==========================================
-
+        // إعادة قراءة السجل للتأكد من الحفظ
         const verifyResponse = await fetch(
             recordUrl,
             {
@@ -385,39 +860,33 @@ form.addEventListener("submit", async function(event) {
 
         if (
             !savedRecord ||
+            savedRecord.accountNumber !== accountNumber ||
             savedRecord.accountNumber16 !== accountNumber16 ||
             savedRecord.name !== name ||
             savedRecord.accountType !== accountType ||
             savedRecord.branch !== branch
         ) {
             throw new Error(
-                "لم تتطابق البيانات المحفوظة مع البيانات المدخلة."
+                "تعذر التحقق من البيانات بعد الحفظ."
             );
         }
 
-        // ==========================================
-        // نجاح العملية
-        // ==========================================
-
-        editingExisting = true;
-        loadedAccountNumber = accountNumber;
-
-        button.textContent = "حفظ التعديلات";
+        setEditingState(true, accountNumber);
 
         if (isEditing) {
             showMessage(
-                "تم تعديل بيانات المستفيد بنجاح، مع الاحتفاظ ببقية بيانات الطلب.",
+                "تم تحديث بيانات المستفيد بنجاح. تم الاحتفاظ ببقية حقول الطلب.",
                 "success"
             );
         } else {
             showMessage(
-                "تمت إضافة المستفيد وحفظ بياناته بنجاح.",
+                "تمت إضافة المستفيد وحفظ البيانات بنجاح.",
                 "success"
             );
         }
 
         console.log(
-            "BOK PEDRO: beneficiary saved:",
+            "BOK PEDRO: Saved beneficiary",
             accountNumber
         );
 
@@ -445,12 +914,15 @@ form.addEventListener("submit", async function(event) {
     } finally {
         busy = false;
         button.disabled = false;
+        searchButton.disabled = false;
 
-        if (editingExisting) {
-            button.textContent = "حفظ التعديلات";
-        } else {
-            button.textContent = "إضافة المستفيد";
-        }
+        button.textContent = editingExisting
+            ? "حفظ التعديلات"
+            : "إضافة المستفيد";
     }
 });
+
 </script>
+
+</body>
+</html>
