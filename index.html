@@ -1,355 +1,3 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BOK PEDRO</title>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    padding: 25px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:
-        radial-gradient(circle at top right, #164936, transparent 40%),
-        linear-gradient(145deg, #030605, #0c1410, #050807);
-    color: #fff;
-}
-
-.container {
-    width: 100%;
-    max-width: 450px;
-}
-
-.brand {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.logo {
-    width: 75px;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    border-radius: 22px;
-    background: linear-gradient(145deg, #174b36, #09150e);
-    border: 1px solid #438967;
-    box-shadow: 0 10px 35px #0008;
-    color: #a9f3c7;
-    font-size: 27px;
-    font-weight: 900;
-}
-
-.brand h1 {
-    font-size: 28px;
-    letter-spacing: 2px;
-}
-
-.brand h1 span {
-    color: #5dd69a;
-}
-
-.brand p {
-    color: #91a59a;
-    font-size: 13px;
-    margin-top: 10px;
-}
-
-.card {
-    background: #101814;
-    border: 1px solid #293d32;
-    border-radius: 24px;
-    padding: 24px 20px;
-    box-shadow: 0 20px 60px #0007;
-}
-
-.card h2 {
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.description {
-    color: #91a198;
-    font-size: 13px;
-    line-height: 1.9;
-    margin-bottom: 24px;
-}
-
-.field {
-    margin-bottom: 18px;
-}
-
-label {
-    display: block;
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 9px;
-    color: #dce8e1;
-}
-
-input,
-select {
-    width: 100%;
-    height: 51px;
-    padding: 0 14px;
-    border-radius: 12px;
-    border: 1px solid #34483b;
-    background: #080e0b;
-    color: #fff;
-    outline: none;
-    font-size: 15px;
-}
-
-input:focus,
-select:focus {
-    border-color: #58d699;
-    box-shadow: 0 0 0 3px #58d69915;
-}
-
-input::placeholder {
-    color: #66756c;
-}
-
-.ltr {
-    direction: ltr;
-    text-align: left;
-    letter-spacing: 1px;
-}
-
-.hint {
-    margin-top: 7px;
-    font-size: 11px;
-    color: #74877a;
-}
-
-button {
-    width: 100%;
-    height: 54px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 13px;
-    background: linear-gradient(110deg, #176641, #239b67);
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .2s;
-}
-
-button:active {
-    transform: scale(.98);
-}
-
-button:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-}
-
-.result {
-    display: none;
-    padding: 14px;
-    margin-top: 17px;
-    border-radius: 12px;
-    font-size: 13px;
-    line-height: 1.9;
-    overflow-wrap: anywhere;
-}
-
-.result.success {
-    display: block;
-    background: #103a28;
-    border: 1px solid #286747;
-    color: #adf3c9;
-}
-
-.result.error {
-    display: block;
-    background: #401b20;
-    border: 1px solid #77343c;
-    color: #ffc0c0;
-}
-
-.footer {
-    text-align: center;
-    margin-top: 22px;
-    color: #75857b;
-    font-size: 12px;
-    line-height: 2;
-}
-
-.footer strong {
-    color: #73dba4;
-}
-
-@media(max-width:360px) {
-    .card {
-        padding: 20px 15px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <div class="brand">
-        <div class="logo">BOK</div>
-
-        <h1>BOK <span>PEDRO</span></h1>
-
-        <p>نظام تسجيل بيانات المستفيدين</p>
-    </div>
-
-    <div class="card">
-
-        <h2>إضافة مستفيد جديد</h2>
-
-        <p class="description">
-            أدخل البيانات المطلوبة بدقة، ثم أرسل الطلب لحفظه في قاعدة البيانات.
-        </p>
-
-        <form id="beneficiaryForm">
-
-            <div class="field">
-
-                <label for="accountNumber">
-                    رقم الحساب المختصر
-                </label>
-
-                <input
-                    id="accountNumber"
-                    class="ltr"
-                    type="text"
-                    inputmode="numeric"
-                    maxlength="7"
-                    pattern="[0-9]{7}"
-                    placeholder="0000000"
-                    autocomplete="off"
-                    required>
-
-                <div class="hint">
-                    يجب أن يتكون من 7 أرقام.
-                </div>
-
-            </div>
-
-            <div class="field">
-
-                <label for="accountNumber16">
-                    رقم الحساب الكامل
-                </label>
-
-                <input
-                    id="accountNumber16"
-                    class="ltr"
-                    type="text"
-                    inputmode="numeric"
-                    maxlength="16"
-                    pattern="[0-9]{16}"
-                    placeholder="0000000000000000"
-                    autocomplete="off"
-                    required>
-
-                <div class="hint">
-                    يجب أن يتكون من 16 رقمًا.
-                </div>
-
-            </div>
-
-            <div class="field">
-
-                <label for="name">
-                    اسم المستفيد
-                </label>
-
-                <input
-                    id="name"
-                    type="text"
-                    maxlength="120"
-                    placeholder="أدخل الاسم الكامل"
-                    required>
-
-            </div>
-
-            <div class="field">
-
-                <label for="accountType">
-                    نوع الحساب
-                </label>
-
-                <select id="accountType" required>
-
-                    <option value="">
-                        اختر نوع الحساب
-                    </option>
-
-                    <option value="حساب توفير">
-                        حساب توفير
-                    </option>
-
-                    <option value="حساب جاري">
-                        حساب جاري
-                    </option>
-
-                    <option value="توفير مميز">
-                        توفير مميز
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="field">
-
-                <label for="branch">
-                    الفرع
-                </label>
-
-                <input
-                    id="branch"
-                    type="text"
-                    maxlength="100"
-                    placeholder="أدخل اسم الفرع"
-                    required>
-
-            </div>
-
-            <button id="submitButton" type="submit">
-                إرسال البيانات
-            </button>
-
-            <div
-                id="result"
-                class="result"
-                role="status"
-                aria-live="polite">
-            </div>
-
-        </form>
-
-    </div>
-
-    <div class="footer">
-        <strong>BOK PEDRO</strong><br>
-        نظام تسجيل بيانات المستفيدين
-    </div>
-
-</div>
-
 <script>
 "use strict";
 
@@ -360,14 +8,9 @@ button:disabled {
 const DATABASE_URL =
     "https://bok-pedro-new-default-rtdb.firebaseio.com";
 
-const form =
-    document.getElementById("beneficiaryForm");
-
-const button =
-    document.getElementById("submitButton");
-
-const result =
-    document.getElementById("result");
+const form = document.getElementById("beneficiaryForm");
+const button = document.getElementById("submitButton");
+const result = document.getElementById("result");
 
 const accountNumberInput =
     document.getElementById("accountNumber");
@@ -375,32 +18,57 @@ const accountNumberInput =
 const accountNumber16Input =
     document.getElementById("accountNumber16");
 
+const nameInput =
+    document.getElementById("name");
+
+const accountTypeInput =
+    document.getElementById("accountType");
+
+const branchInput =
+    document.getElementById("branch");
+
+// هل الصفحة تعدّل مستفيداً موجوداً؟
+let editingExisting = false;
+
+// رقم المستفيد الذي تم تحميل بياناته
+let loadedAccountNumber = "";
+
+// منع تنفيذ عمليتين في نفس الوقت
+let busy = false;
+
 
 // ==========================================
-// عرض الرسائل
+// رسائل الحالة
 // ==========================================
 
 function showMessage(message, type) {
-
     result.textContent = message;
-
     result.className = "result " + type;
-
     result.style.display = "block";
 }
 
 
 // ==========================================
-// السماح بالأرقام الإنجليزية فقط
+// تنظيف أرقام الحساب
 // ==========================================
 
 function digitsOnly(input) {
-
     input.value = input.value.replace(/[^0-9]/g, "");
 }
 
 accountNumberInput.addEventListener("input", function() {
     digitsOnly(this);
+
+    // إذا غيّر المستخدم رقم الحساب بعد تحميل البيانات،
+    // نلغي وضع التعديل حتى لا يعدّل سجل المستفيد الخطأ.
+    if (
+        editingExisting &&
+        this.value.trim() !== loadedAccountNumber
+    ) {
+        editingExisting = false;
+        loadedAccountNumber = "";
+        button.textContent = "إضافة المستفيد";
+    }
 });
 
 accountNumber16Input.addEventListener("input", function() {
@@ -413,17 +81,13 @@ accountNumber16Input.addEventListener("input", function() {
 // ==========================================
 
 async function readResponse(response) {
-
     const text = await response.text();
 
     let data = null;
 
     try {
-
         data = text ? JSON.parse(text) : null;
-
     } catch (error) {
-
         throw new Error(
             "استجابة غير مفهومة من Firebase. HTTP " +
             response.status
@@ -431,7 +95,6 @@ async function readResponse(response) {
     }
 
     if (!response.ok) {
-
         const firebaseError =
             data && data.error
                 ? data.error
@@ -445,14 +108,123 @@ async function readResponse(response) {
 
 
 // ==========================================
-// إرسال بيانات المستفيد
+// إنشاء رابط سجل المستفيد
+// ==========================================
+
+function getRecordUrl(accountNumber) {
+    return DATABASE_URL +
+        "/requests/" +
+        encodeURIComponent(accountNumber) +
+        ".json";
+}
+
+
+// ==========================================
+// البحث عن مستفيد وتحميل بياناته
+// ==========================================
+
+async function loadBeneficiary() {
+    if (busy) {
+        return;
+    }
+
+    const accountNumber =
+        accountNumberInput.value.trim();
+
+    if (!/^[0-9]{7}$/.test(accountNumber)) {
+        showMessage(
+            "أدخل رقم الحساب المختصر المكوّن من 7 أرقام أولاً.",
+            "error"
+        );
+        return;
+    }
+
+    busy = true;
+    button.disabled = true;
+    button.textContent = "جارٍ البحث...";
+
+    try {
+        const response = await fetch(
+            getRecordUrl(accountNumber),
+            {
+                method: "GET",
+                cache: "no-store"
+            }
+        );
+
+        const record = await readResponse(response);
+
+        if (record === null) {
+            editingExisting = false;
+            loadedAccountNumber = "";
+
+            button.textContent = "إضافة المستفيد";
+
+            showMessage(
+                "لا يوجد سجل بهذا الرقم. أكمل البيانات ثم اضغط إضافة المستفيد.",
+                "success"
+            );
+
+            return;
+        }
+
+        // تعبئة الحقول الموجودة في السجل
+        accountNumber16Input.value =
+            record.accountNumber16 || "";
+
+        nameInput.value =
+            record.name || "";
+
+        accountTypeInput.value =
+            record.accountType || "";
+
+        branchInput.value =
+            record.branch || "";
+
+        editingExisting = true;
+        loadedAccountNumber = accountNumber;
+
+        button.textContent = "حفظ التعديلات";
+
+        showMessage(
+            "تم العثور على المستفيد وتحميل بياناته. عدّل المطلوب ثم اضغط حفظ التعديلات.",
+            "success"
+        );
+
+    } catch (error) {
+        console.error("Load beneficiary error:", error);
+
+        showMessage(
+            "تعذر تحميل البيانات: " + error.message,
+            "error"
+        );
+
+    } finally {
+        busy = false;
+        button.disabled = false;
+    }
+}
+
+
+// ==========================================
+// البحث عند مغادرة حقل رقم الحساب
+// ==========================================
+
+accountNumberInput.addEventListener("change", function() {
+    if (/^[0-9]{7}$/.test(this.value.trim())) {
+        loadBeneficiary();
+    }
+});
+
+
+// ==========================================
+// حفظ مستفيد جديد أو تعديل مستفيد موجود
 // ==========================================
 
 form.addEventListener("submit", async function(event) {
-
     event.preventDefault();
 
-    if (button.disabled) {
+    if (busy) {
         return;
     }
 
@@ -463,261 +235,222 @@ form.addEventListener("submit", async function(event) {
         accountNumber16Input.value.trim();
 
     const name =
-        document.getElementById("name").value.trim();
+        nameInput.value.trim();
 
     const accountType =
-        document.getElementById("accountType").value;
+        accountTypeInput.value;
 
     const branch =
-        document.getElementById("branch").value.trim();
-
+        branchInput.value.trim();
 
     // ==========================================
-    // التحقق من رقم الحساب المختصر
+    // التحقق من المدخلات
     // ==========================================
 
     if (!/^[0-9]{7}$/.test(accountNumber)) {
-
         showMessage(
             "رقم الحساب المختصر يجب أن يتكون من 7 أرقام.",
             "error"
         );
-
         return;
     }
-
-
-    // ==========================================
-    // التحقق من رقم الحساب الكامل
-    // ==========================================
 
     if (!/^[0-9]{16}$/.test(accountNumber16)) {
-
         showMessage(
-            "رقم الحساب الكامل يجب أن يتكون من 16 رقمًا.",
+            "رقم الحساب الكامل يجب أن يتكون من 16 رقماً.",
             "error"
         );
-
         return;
     }
 
-
-    // ==========================================
-    // التحقق من بقية البيانات
-    // ==========================================
-
     if (!name || !accountType || !branch) {
-
         showMessage(
             "أكمل جميع البيانات المطلوبة.",
             "error"
         );
-
         return;
     }
 
-
-    // ==========================================
-    // تعطيل الزر أثناء العملية
-    // ==========================================
-
+    busy = true;
     button.disabled = true;
-
-    button.textContent = "جارٍ التحقق والحفظ...";
-
+    button.textContent = "جارٍ الحفظ...";
     result.style.display = "none";
 
-
     try {
+        const recordUrl = getRecordUrl(accountNumber);
 
-        // ==========================================
-        // المسار المباشر باستخدام رقم الحساب
-        // requests/1234567
-        // ==========================================
-
-        const recordUrl =
-            DATABASE_URL +
-            "/requests/" +
-            encodeURIComponent(accountNumber) +
-            ".json";
-
-
-        // ==========================================
-        // فحص وجود الحساب مسبقاً
-        // ==========================================
-
-        const checkResponse = await fetch(recordUrl, {
-            method: "GET",
-            cache: "no-store"
-        });
+        // نعيد قراءة السجل قبل التعديل حتى لا نستبدل
+        // بيانات الطلب القديمة أو نضيف فوق سجل غير متوقع.
+        const checkResponse = await fetch(
+            recordUrl,
+            {
+                method: "GET",
+                cache: "no-store"
+            }
+        );
 
         const existingRecord =
             await readResponse(checkResponse);
 
+        const isEditing =
+            existingRecord !== null;
 
-        if (existingRecord !== null) {
-
+        // إذا كان السجل موجوداً، لا نسمح بتغيير المفتاح
+        // أو التعامل مع سجل آخر على أنه نفس المستفيد.
+        if (
+            isEditing &&
+            loadedAccountNumber !== accountNumber
+        ) {
             showMessage(
-                "هذا الرقم موجود مسبقاً في قاعدة البيانات. " +
-                "لم تتم إضافة أي بيانات جديدة.",
+                "هذا المستفيد موجود بالفعل. ابحث عن بياناته أولاً ثم عدّلها.",
                 "error"
             );
-
             return;
         }
 
-
         // ==========================================
-        // إعداد سجل المستفيد
+        // إعداد بيانات المستفيد فقط
         // ==========================================
 
-        const record = {
-
+        const beneficiaryData = {
             accountNumber: accountNumber,
-
             accountNumber16: accountNumber16,
-
             name: name,
-
             accountType: accountType,
-
-            branch: branch,
-
-            status: "completed",
-
-            createdAt: {
-                ".sv": "timestamp"
-            }
-
+            branch: branch
         };
 
+        let saveUrl;
+        let saveMethod;
+        let saveBody;
 
-        // ==========================================
-        // الحفظ بالمفتاح المحدد
-        // ==========================================
+        if (isEditing) {
+            /*
+             * PATCH يحدّث الحقول المحددة فقط.
+             * يحتفظ ببقية الحقول في الطلب، مثل status
+             * وcreatedAt وأي بيانات أخرى موجودة.
+             */
+            saveUrl = recordUrl;
+            saveMethod = "PATCH";
+            saveBody = beneficiaryData;
 
-        const saveResponse = await fetch(recordUrl, {
+        } else {
+            /*
+             * سجل جديد.
+             * PUT هنا ينشئ السجل كاملاً لأنه غير موجود.
+             */
+            saveUrl = recordUrl;
+            saveMethod = "PUT";
 
-            method: "PUT",
+            saveBody = {
+                accountNumber: accountNumber,
+                accountNumber16: accountNumber16,
+                name: name,
+                accountType: accountType,
+                branch: branch,
+                status: "completed",
+                createdAt: {
+                    ".sv": "timestamp"
+                }
+            };
+        }
 
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(record)
-
-        });
-
+        const saveResponse = await fetch(
+            saveUrl,
+            {
+                method: saveMethod,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(saveBody)
+            }
+        );
 
         await readResponse(saveResponse);
 
-
         // ==========================================
-        // قراءة البيانات للتحقق من الحفظ
+        // التحقق من الحفظ
         // ==========================================
 
-        const verifyResponse = await fetch(recordUrl, {
-
-            method: "GET",
-
-            cache: "no-store"
-
-        });
-
+        const verifyResponse = await fetch(
+            recordUrl,
+            {
+                method: "GET",
+                cache: "no-store"
+            }
+        );
 
         const savedRecord =
             await readResponse(verifyResponse);
 
-
-        // ==========================================
-        // التأكد من مطابقة البيانات
-        // ==========================================
-
         if (
             !savedRecord ||
-
-            savedRecord.accountNumber !== accountNumber ||
-
             savedRecord.accountNumber16 !== accountNumber16 ||
-
             savedRecord.name !== name ||
-
             savedRecord.accountType !== accountType ||
-
-            savedRecord.branch !== branch ||
-
-            savedRecord.status !== "completed"
+            savedRecord.branch !== branch
         ) {
-
             throw new Error(
-                "تعذر التحقق من جميع البيانات المحفوظة."
+                "لم تتطابق البيانات المحفوظة مع البيانات المدخلة."
             );
         }
-
 
         // ==========================================
         // نجاح العملية
         // ==========================================
 
-        showMessage(
-            "تم حفظ بيانات المستفيد والتحقق منها بنجاح. " +
-            "رقم الحساب: " + accountNumber,
-            "success"
-        );
+        editingExisting = true;
+        loadedAccountNumber = accountNumber;
 
-        form.reset();
+        button.textContent = "حفظ التعديلات";
 
+        if (isEditing) {
+            showMessage(
+                "تم تعديل بيانات المستفيد بنجاح، مع الاحتفاظ ببقية بيانات الطلب.",
+                "success"
+            );
+        } else {
+            showMessage(
+                "تمت إضافة المستفيد وحفظ بياناته بنجاح.",
+                "success"
+            );
+        }
 
         console.log(
-            "BOK PEDRO: Saved and verified requests/" +
+            "BOK PEDRO: beneficiary saved:",
             accountNumber
         );
 
-
     } catch (error) {
-
-        console.error(
-            "BOK PEDRO Firebase error:",
-            error
-        );
-
+        console.error("Save beneficiary error:", error);
 
         let message =
             "فشل حفظ البيانات: " + error.message;
 
-
         if (!navigator.onLine) {
-
             message =
                 "لا يوجد اتصال بالإنترنت. تحقق من الاتصال وحاول مرة أخرى.";
         }
 
-
         if (
             String(error.message).includes("PERMISSION_DENIED") ||
-
             String(error.message).includes("Permission denied")
         ) {
-
             message =
-                "Firebase رفض العملية بسبب الصلاحيات. " +
-                "راجع قواعد Rules الخاصة بقاعدة البيانات.";
+                "Firebase رفض العملية بسبب الصلاحيات. راجع قواعد Rules.";
         }
-
 
         showMessage(message, "error");
 
-
     } finally {
-
+        busy = false;
         button.disabled = false;
 
-        button.textContent = "إرسال البيانات";
-
+        if (editingExisting) {
+            button.textContent = "حفظ التعديلات";
+        } else {
+            button.textContent = "إضافة المستفيد";
+        }
     }
-
 });
 </script>
-
-</body>
-</html>
